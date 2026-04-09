@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominy Solar | Energia Solar para Empresas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1e3a8a 50%, #0f172a 100%);
+            color: white;
+        }
+
+        .whatsapp-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #fbbf24, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(10, 14, 39, 0.8) 100%);
+        }
+
+        .card-gradient {
+            background: linear-gradient(to bottom right, rgba(30, 41, 59, 0.5), rgba(30, 58, 138, 0.3));
+            border: 1px solid rgba(71, 85, 105, 0.5);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #fbbf24, #f97316);
+            color: #0f172a;
+            font-weight: bold;
+            padding: 1.5rem 2rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 12px rgba(251, 191, 36, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+        }
+
+        .accordion-header {
+            cursor: pointer;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(251, 191, 36, 0.3);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .form-input {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #fbbf24;
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: linear-gradient(to right, #1e3a8a, #fbbf24);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fbbf24;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fbbf24;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            color: #86efac;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.875rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-gradient-to-b from-slate-950 to-transparent backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="font-bold text-sm sm:text-lg leading-none text-white">DOMINY SOLAR</span>
+            </div>
+            <div class="hidden md:flex items-center gap-6 lg:gap-8">
+                <button onclick="scrollToSection('home')" class="text-sm hover:text-amber-400 transition">Home</button>
+                <button onclick="scrollToSection('calculadora')" class="text-sm hover:text-amber-400 transition">Calculadora Interativa</button>
+                <button onclick="scrollToSection('faq')" class="text-sm hover:text-amber-400 transition">Dúvidas</button>
+                <button class="btn-primary text-sm px-4 py-2">Solicitar Análise</button>
+            </div>
+            <div class="md:hidden">
+                <button class="btn-primary text-xs px-3 py-2">Solicitar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-16 sm:pt-20 overflow-hidden" 
+             style="background-image: linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(10, 14, 39, 0.8) 100%), url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663029793562/GERuHwCkXEYdnfZo.jpg'); background-size: cover; background-position: center;">
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+            <div class="inline-block mb-4 sm:mb-6 px-3 sm:px-4 py-2 bg-gradient-to-r from-amber-400/20 to-orange-500/20 border border-amber-400/30 rounded-full">
+                <span class="text-amber-400 font-semibold text-xs sm:text-sm">⚡ TRANSFORME CUSTOS EM LUCRO</span>
+            </div>
+
+            <h1 class="hero-title text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 gradient-text leading-tight">
+                Sua Energia Está Custando Seu Lucro
+            </h1>
+
+            <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
+                Projetos solares para empresas que buscam previsibilidade de caixa, retorno claro e execução técnica segura.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-4 sm:mb-6">
+                <button class="btn-primary text-lg sm:text-xl px-8 sm:px-12 py-6 sm:py-8" onclick="scrollToSection('calculadora')">
+                    Consultar Economia
+                </button>
+            </div>
+
+            <p class="text-gray-300 text-xs sm:text-sm">Análise técnica sem compromisso.</p>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Section: A Dor do Empresário Moderno -->
+    <section id="solucoes" class="py-12 sm:py-20 px-4 bg-gradient-to-b from-slate-950 to-blue-950">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">
+                A Dor do Empresário Moderno
+            </h2>
+            <p class="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+                Energia elétrica virou o terceiro maior custo operacional. E cresce a cada ano.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-4 sm:gap-8">
+                <!-- Card 1 -->
+                <div class="card-gradient rounded-lg p-6 sm:p-8 hover:border-amber-400/30 transition-all overflow-hidden">
+                    <div class="h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029793562/TsTuGTjaSJg25DXhibBNTn/custos-crescentes-v2-HMwAoJG9T22wntXNixfsHr.webp" alt="Custos Crescentes" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Custos Crescentes</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Tarifas aumentam 10-15% ao ano. Seu lucro encolhe enquanto você não faz nada.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card-gradient rounded-lg p-6 sm:p-8 hover:border-amber-400/30 transition-all overflow-hidden">
+                    <div class="h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029793562/TsTuGTjaSJg25DXhibBNTn/dinheiro-perdido-v2-S3cTGtzyxSy2ACbzeMuBYW.webp" alt="Dinheiro Perdido" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Dinheiro Perdido</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Você paga por energia que poderia estar gerando lucro. Todos os meses. Todos os anos.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card-gradient rounded-lg p-6 sm:p-8 hover:border-amber-400/30 transition-all overflow-hidden">
+                    <div class="h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029793562/TsTuGTjaSJg25DXhibBNTn/volatilidade-painel-v2-8SVcKDpnojS37LQw948Vnw.webp" alt="Sem Controle" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Sem Controle</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Sem visibilidade sobre consumo. Sem previsibilidade de gastos. Sem controle.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculadora" class="py-12 sm:py-20 px-4 bg-gradient-to-b from-blue-950 to-slate-950">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">
+                Calculadora Interativa
+            </h2>
+            <p class="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+                Descubra quanto você pode economizar com energia solar
+            </p>
+
+            <div class="card-gradient rounded-lg p-6 sm:p-8">
+                <div class="space-y-6">
+                    <!-- Input: Conta Mensal -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Valor da Conta de Energia (R$)</label>
+                        <input type="number" id="contaMensal" class="form-input" placeholder="Ex: 5000" min="0">
+                    </div>
+
+                    <!-- Slider: Redução -->
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <label class="text-sm font-semibold">Redução de Tarifa Esperada</label>
+                            <span class="text-amber-400 font-bold"><span id="reducaoValue">85</span>%</span>
+                        </div>
+                        <input type="range" id="reducaoSlider" class="slider" min="0" max="100" value="85">
+                    </div>
+
+                    <!-- Results -->
+                    <div class="grid sm:grid-cols-2 gap-4 mt-8 pt-6 border-t border-slate-700/50">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <p class="text-gray-400 text-sm mb-1">Economia Mensal</p>
+                            <p class="text-2xl sm:text-3xl font-bold text-amber-400">R$ <span id="economiaMensal">0</span></p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <p class="text-gray-400 text-sm mb-1">Economia Anual</p>
+                            <p class="text-2xl sm:text-3xl font-bold text-amber-400">R$ <span id="economiaAnual">0</span></p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <p class="text-gray-400 text-sm mb-1">Payback</p>
+                            <p class="text-2xl sm:text-3xl font-bold text-amber-400"><span id="payback">3 - 5</span> anos</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <p class="text-gray-400 text-sm mb-1">ROI Anual</p>
+                            <p class="text-2xl sm:text-3xl font-bold text-amber-400"><span id="roi">0</span>%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="mt-8 sm:mt-12 flex justify-center">
+                <a href="https://wa.me/21990958850?text=Olá! Gostaria de solicitar uma análise de viabilidade solar para minha empresa." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn-primary rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all transform hover:scale-105">
+                    Faça Sua Análise Gratuita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="py-12 sm:py-20 px-4 bg-gradient-to-b from-slate-950 to-blue-950">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">
+                Metodologia Técnica Comprovada
+            </h2>
+            <p class="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+                Que transforma custos em benefício
+            </p>
+
+            <div class="grid md:grid-cols-4 gap-4 sm:gap-6">
+                <div class="card-gradient rounded-lg p-6 sm:p-8 text-center">
+                    <div class="text-4xl font-bold text-amber-400 mb-3">1</div>
+                    <h3 class="font-bold mb-2">Análise Técnica</h3>
+                    <p class="text-gray-300 text-sm">Avaliação completa do seu telhado e consumo</p>
+                </div>
+                <div class="card-gradient rounded-lg p-6 sm:p-8 text-center">
+                    <div class="text-4xl font-bold text-amber-400 mb-3">2</div>
+                    <h3 class="font-bold mb-2">Projeto Personalizado</h3>
+                    <p class="text-gray-300 text-sm">Design otimizado para sua empresa</p>
+                </div>
+                <div class="card-gradient rounded-lg p-6 sm:p-8 text-center">
+                    <div class="text-4xl font-bold text-amber-400 mb-3">3</div>
+                    <h3 class="font-bold mb-2">Retorno Comprovado</h3>
+                    <p class="text-gray-300 text-sm">ROI claro e previsível</p>
+                </div>
+                <div class="card-gradient rounded-lg p-6 sm:p-8 text-center">
+                    <div class="text-4xl font-bold text-amber-400 mb-3">4</div>
+                    <h3 class="font-bold mb-2">Execução Segura</h3>
+                    <p class="text-gray-300 text-sm">Instalação profissional e garantida</p>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="mt-8 sm:mt-12 flex justify-center">
+                <a href="https://wa.me/21990958850?text=Olá! Gostaria de solicitar uma análise de viabilidade solar para minha empresa." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn-primary rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all transform hover:scale-105">
+                    Comece Sua Transformação Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Section -->
+    <section class="py-12 sm:py-20 px-4 bg-gradient-to-b from-blue-950 to-slate-950">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">
+                Veja a Transformação em Ação
+            </h2>
+            <p class="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+                Três pilares que garantem seu sucesso
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-4 sm:gap-8">
+                <div class="card-gradient rounded-lg p-6 sm:p-8 overflow-hidden">
+                    <div class="h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029793562/TsTuGTjaSJg25DXhibBNTn/instalacao-profissional-v2-hRnutEyhn5htJskeGRovJm.webp" alt="Instalação Profissional" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Instalação Profissional</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Técnicos experientes com segurança garantida
+                    </p>
+                </div>
+
+                <div class="card-gradient rounded-lg p-6 sm:p-8 overflow-hidden">
+                    <div class="h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029793562/TsTuGTjaSJg25DXhibBNTn/economia-maxima-v2-nWTxCv5SWwB5uADqrpX88i.webp" alt="Economia Máxima" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Economia Máxima <span class="text-amber-400">90%</span></h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Redução de até 90% na conta de energia
+                    </p>
+                </div>
+
+                <div class="card-gradient rounded-lg p-6 sm:p-8 overflow-hidden">
+                    <div class="h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663029793562/TsTuGTjaSJg25DXhibBNTn/monitoramento-tempo-real-v2-GHhuUqTzGjjcxpTEMkm8CY.webp" alt="Monitoramento em Tempo Real" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Monitoramento em Tempo Real</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Acompanhe sua geração e economia 24/7
+                    </p>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="mt-8 sm:mt-12 flex justify-center">
+                <a href="https://wa.me/21990958850?text=Olá! Gostaria de solicitar uma análise de viabilidade solar para minha empresa." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn-primary rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all transform hover:scale-105">
+                    Solicite Sua Análise Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section class="py-12 sm:py-20 px-4 bg-gradient-to-b from-slate-950 to-blue-950" 
+             style="background-image: linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(10, 14, 39, 0.95) 100%), url('https://files.manuscdn.com/user_upload_by_module/session_file/310419663029793562/8pHqJ3WvJJPQvYfj.jpg'); background-size: cover; background-position: center;">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">
+                Para Quem Faz Sentido
+            </h2>
+            <p class="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+                Critérios para sua empresa ser elegível
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                <div class="flex items-start gap-3 bg-slate-800/50 rounded-lg p-4">
+                    <span class="text-amber-400 text-xl font-bold">✓</span>
+                    <div>
+                        <p class="font-semibold">Conta de energia acima de R$ 2.000/mês</p>
+                        <p class="text-gray-400 text-sm">Mínimo viável para projeto solar</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 bg-slate-800/50 rounded-lg p-4">
+                    <span class="text-amber-400 text-xl font-bold">✓</span>
+                    <div>
+                        <p class="font-semibold">Telhado com boa incidência solar</p>
+                        <p class="text-gray-400 text-sm">Sem sombreamento excessivo</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 bg-slate-800/50 rounded-lg p-4">
+                    <span class="text-amber-400 text-xl font-bold">✓</span>
+                    <div>
+                        <p class="font-semibold">Estrutura do telhado adequada</p>
+                        <p class="text-gray-400 text-sm">Concreto, metal ou cerâmica</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 bg-slate-800/50 rounded-lg p-4">
+                    <span class="text-amber-400 text-xl font-bold">✓</span>
+                    <div>
+                        <p class="font-semibold">Disposição para investimento</p>
+                        <p class="text-gray-400 text-sm">ROI de 3-5 anos comprovado</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="mt-8 sm:mt-12 flex justify-center">
+                <a href="https://wa.me/21990958850?text=Olá! Gostaria de solicitar uma análise de viabilidade solar para minha empresa." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn-primary rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all transform hover:scale-105">
+                    Verificar Elegibilidade Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-12 sm:py-20 px-4 bg-gradient-to-b from-blue-950 to-slate-950">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">
+                Dúvidas Frequentes
+            </h2>
+            <p class="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+                Respostas para suas principais questões
+            </p>
+
+            <div class="space-y-4">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(0)">
+                        <span class="font-semibold">Quanto tempo leva para instalar?</span>
+                        <span class="text-amber-400">+</span>
+                    </div>
+                    <div class="accordion-content" id="accordion-0">
+                        A instalação típica leva 3-5 dias, dependendo do tamanho do projeto. Após a instalação, leva 15-30 dias para aprovação da distribuidora e ativação do sistema.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(1)">
+                        <span class="font-semibold">Qual é a garantia dos painéis?</span>
+                        <span class="text-amber-400">+</span>
+                    </div>
+                    <div class="accordion-content" id="accordion-1">
+                        Os painéis solares têm garantia de 25 anos de funcionamento. O inversor tem garantia de 10 anos. Oferecemos suporte técnico vitalício.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(2)">
+                        <span class="font-semibold">E se chover muito ou nevar?</span>
+                        <span class="text-amber-400">+</span>
+                    </div>
+                    <div class="accordion-content" id="accordion-2">
+                        Os painéis funcionam mesmo com nuvens. A chuva até limpa os painéis naturalmente. Em regiões com neve, o sistema é projetado para suportar o peso.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(3)">
+                        <span class="font-semibold">Preciso fazer manutenção?</span>
+                        <span class="text-amber-400">+</span>
+                    </div>
+                    <div class="accordion-content" id="accordion-3">
+                        Manutenção mínima. Limpeza anual dos painéis é recomendada. O sistema é monitorado remotamente 24/7 para detectar qualquer problema.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(4)">
+                        <span class="font-semibold">Como funciona a conexão com a rede?</span>
+                        <span class="text-amber-400">+</span>
+                    </div>
+                    <div class="accordion-content" id="accordion-4">
+                        Seu sistema se conecta à rede elétrica. Quando você gera mais energia que consome, o excedente é enviado à rede e você recebe créditos na conta.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="mt-8 sm:mt-12 flex justify-center">
+                <a href="https://wa.me/21990958850?text=Olá! Gostaria de solicitar uma análise de viabilidade solar para minha empresa." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="btn-primary rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all transform hover:scale-105">
+                    Tire Suas Dúvidas com Especialista
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-12 sm:py-20 px-4 bg-gradient-to-b from-slate-950 to-blue-950">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="section-title text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 gradient-text">
+                Comece Sua Análise Hoje
+            </h2>
+            <p class="text-center text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+                Preencha o formulário e receba uma análise técnica personalizada
+            </p>
+
+            <div class="card-gradient rounded-lg p-6 sm:p-8">
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+                <form id="contactForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Seu Nome</label>
+                        <input type="text" id="nome" class="form-input" placeholder="João Silva" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">WhatsApp</label>
+                        <input type="tel" id="whatsapp" class="form-input" placeholder="(11) 99999-9999" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Valor da Conta de Energia (R$)</label>
+                        <input type="number" id="energia" class="form-input" placeholder="5000" min="0" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-full text-lg mt-6">
+                        Analisar Minha Economia
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 sm:py-12 px-4 bg-slate-950 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid sm:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">DOMINY SOLAR</h3>
+                    <p class="text-gray-400 text-sm">Transformando custos em benefício através de energia solar.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contato</h3>
+                    <p class="text-gray-400 text-sm">
+                        📧 <a href="mailto:contato@diminysolar.com.br" class="text-amber-400 hover:text-amber-300">contato@diminysolar.com.br</a>
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Dominy Solar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Calculator functionality
+        const contaInput = document.getElementById('contaMensal');
+        const reducaoSlider = document.getElementById('reducaoSlider');
+        const reducaoValue = document.getElementById('reducaoValue');
+        const economiaMensalSpan = document.getElementById('economiaMensal');
+        const economiaAnualSpan = document.getElementById('economiaAnual');
+        const paybackSpan = document.getElementById('payback');
+        const roiSpan = document.getElementById('roi');
+
+        function updateCalculator() {
+            const contaMensal = parseFloat(contaInput.value) || 0;
+            const reducao = parseFloat(reducaoSlider.value) || 85;
+
+            reducaoValue.textContent = reducao.toFixed(0);
+
+            const economiaMensal = (contaMensal * reducao) / 100;
+            const economiaAnual = economiaMensal * 12;
+            const payback = economiaAnual > 0 ? (contaMensal * 12) / economiaAnual : 0;
+            const paybackAjustado = Math.max(3, Math.min(5, payback));
+            const roi = payback > 0 ? (100 / payback) : 0;
+
+            economiaMensalSpan.textContent = economiaMensal.toFixed(2).replace('.', ',');
+            economiaAnualSpan.textContent = economiaAnual.toFixed(2).replace('.', ',');
+            paybackSpan.textContent = '3 - 5';
+            roiSpan.textContent = roi.toFixed(0);
+        }
+
+        contaInput.addEventListener('input', updateCalculator);
+        reducaoSlider.addEventListener('input', updateCalculator);
+
+        // Accordion functionality
+        function toggleAccordion(index) {
+            const content = document.getElementById(`accordion-${index}`);
+            const header = content.previousElementSibling;
+            const isActive = content.classList.contains('active');
+
+            // Close all accordions
+            document.querySelectorAll('.accordion-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelectorAll('.accordion-header span:last-child').forEach(el => {
+                el.textContent = '+';
+            });
+
+            // Open clicked accordion
+            if (!isActive) {
+                content.classList.add('active');
+                header.querySelector('span:last-child').textContent = '−';
+            }
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const energia = document.getElementById('energia').value;
+
+            // Save to localStorage
+            const leadData = {
+                nome: nome,
+                whatsapp: whatsapp,
+                energia: energia,
+                data: new Date().toISOString(),
+                economia: ((parseFloat(energia) || 0) * 85) / 100,
+            };
+
+            const leads = JSON.parse(localStorage.getItem('dominy_leads') || '[]');
+            leads.push(leadData);
+            localStorage.setItem('dominy_leads', JSON.stringify(leads));
+
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = '✅ Lead capturado com sucesso! Redirecionando para WhatsApp...';
+            successMessage.style.display = 'block';
+
+            // Redirect to WhatsApp
+            setTimeout(() => {
+                const mensagem = `Olá! Meu nome é ${nome}. Minha conta de energia é R$ ${energia}/mês. Gostaria de solicitar uma análise de viabilidade solar.`;
+                window.location.href = `https://wa.me/5511999999999?text=${encodeURIComponent(mensagem)}`;
+            }, 1000);
+        });
+
+        // Initialize calculator
+        updateCalculator();
+    </script>
+</body>
+</html>
